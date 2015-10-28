@@ -5,7 +5,7 @@
 
 namespace SprykerFeature\Zed\Stock\Persistence\Propel;
 
-use SprykerFeature\Zed\Stock\Persistence\Propel\Base\SpyStock as BaseSpyStock;
+use Orm\Zed\Stock\Persistence\Base\SpyStock as BaseSpyStock;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_stock' table.
@@ -17,7 +17,7 @@ use SprykerFeature\Zed\Stock\Persistence\Propel\Base\SpyStock as BaseSpyStock;
  * long as it does not already exist in the output directory.
  *
  */
-class SpyStock extends BaseSpyStock
+abstract class AbstractSpyStock extends BaseSpyStock
 {
 
 }

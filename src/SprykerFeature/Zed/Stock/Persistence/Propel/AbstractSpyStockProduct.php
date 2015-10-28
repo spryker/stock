@@ -6,8 +6,8 @@
 namespace SprykerFeature\Zed\Stock\Persistence\Propel;
 
 use Propel\Runtime\Exception\PropelException;
-use SprykerFeature\Zed\Stock\Persistence\Propel\Base\SpyStockProduct as BaseSpyStockProduct;
-use SprykerFeature\Zed\Stock\Persistence\Propel\Map\SpyStockProductTableMap;
+use Orm\Zed\Stock\Persistence\Base\SpyStockProduct as BaseSpyStockProduct;
+use Orm\Zed\Stock\Persistence\Map\SpyStockProductTableMap;
 use Propel\Runtime\Propel;
 
 /**
@@ -20,7 +20,7 @@ use Propel\Runtime\Propel;
  * long as it does not already exist in the output directory.
  *
  */
-class SpyStockProduct extends BaseSpyStockProduct
+abstract class AbstractSpyStockProduct extends BaseSpyStockProduct
 {
 
     /**

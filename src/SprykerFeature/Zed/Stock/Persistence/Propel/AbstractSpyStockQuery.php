@@ -5,10 +5,10 @@
 
 namespace SprykerFeature\Zed\Stock\Persistence\Propel;
 
-use SprykerFeature\Zed\Stock\Persistence\Propel\Base\SpyStockProductQuery as BaseSpyStockProductQuery;
+use Orm\Zed\Stock\Persistence\Base\SpyStockQuery as BaseSpyStockQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_stock_product' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_stock' table.
  *
  *
  *
@@ -17,7 +17,7 @@ use SprykerFeature\Zed\Stock\Persistence\Propel\Base\SpyStockProductQuery as Bas
  * long as it does not already exist in the output directory.
  *
  */
-class SpyStockProductQuery extends BaseSpyStockProductQuery
+abstract class AbstractSpyStockQuery extends BaseSpyStockQuery
 {
 
-} // SpyStockProductQuery
+} // SpyStockQuery
