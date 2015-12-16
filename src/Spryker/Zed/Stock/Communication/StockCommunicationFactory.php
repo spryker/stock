@@ -15,7 +15,7 @@ use Spryker\Zed\Stock\Persistence\StockQueryContainer;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Symfony\Component\HttpFoundation\Request;
 
-class StockDependencyContainer extends AbstractCommunicationFactory
+class StockCommunicationFactory extends AbstractCommunicationFactory
 {
 
     /**

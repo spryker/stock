@@ -21,7 +21,7 @@ use Spryker\Zed\Stock\StockConfig;
 /**
  * @method StockConfig getConfig()
  */
-class StockDependencyContainer extends AbstractBusinessFactory
+class StockBusinessFactory extends AbstractBusinessFactory
 {
 
     /**
