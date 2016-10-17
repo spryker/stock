@@ -15,7 +15,7 @@ use Spryker\Zed\Product\Dependency\Plugin\ProductConcretePluginInterface;
  * @method \Spryker\Zed\Stock\Business\StockFacadeInterface getFacade()
  * @method \Spryker\Zed\Stock\Communication\StockCommunicationFactory getFactory()
  */
-class ProductConcreteCreatePlugin extends AbstractPlugin implements ProductConcretePluginInterface
+class ProductConcreteAfterUpdatePlugin extends AbstractPlugin implements ProductConcretePluginInterface
 {
 
     /**
