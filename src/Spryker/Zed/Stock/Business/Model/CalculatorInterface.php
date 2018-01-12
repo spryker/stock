@@ -18,7 +18,6 @@ interface CalculatorInterface
      */
     public function calculateStockForProduct($sku);
 
-
     /**
      * @param string $sku
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
