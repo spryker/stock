@@ -76,7 +76,7 @@ class StockMapper
     }
 
     /**
-     * @param list<\Orm\Zed\Stock\Persistence\SpyStock> $stockEntityCollection
+     * @param array<\Orm\Zed\Stock\Persistence\SpyStock> $stockEntityCollection
      * @param \Generated\Shared\Transfer\StockCollectionTransfer $stockCollectionTransfer
      *
      * @return \Generated\Shared\Transfer\StockCollectionTransfer
