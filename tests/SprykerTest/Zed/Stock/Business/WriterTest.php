@@ -44,9 +44,6 @@ class WriterTest extends Unit
      */
     protected $stockFacade;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -54,9 +51,6 @@ class WriterTest extends Unit
         $this->stockFacade = new StockFacade();
     }
 
-    /**
-     * @return void
-     */
     public function testDecrementStock(): void
     {
         $this->saveData();
@@ -76,9 +70,6 @@ class WriterTest extends Unit
         $this->assertSame((new Decimal($oldQuantity))->subtract(1)->toString(), $newQuantity);
     }
 
-    /**
-     * @return void
-     */
     public function testIncrementStock(): void
     {
         $this->saveData();
@@ -96,9 +87,6 @@ class WriterTest extends Unit
         $this->assertSame((new Decimal($oldQuantity))->add(1)->toString(), $newQuantity);
     }
 
-    /**
-     * @return void
-     */
     protected function saveData(): void
     {
         $productAbstract = SpyProductAbstractQuery::create()

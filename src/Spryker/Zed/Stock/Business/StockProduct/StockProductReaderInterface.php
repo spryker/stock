@@ -13,27 +13,10 @@ use Orm\Zed\Stock\Persistence\SpyStockProduct;
 
 interface StockProductReaderInterface
 {
-    /**
-     * @param string $sku
-     *
-     * @return bool
-     */
     public function isNeverOutOfStock(string $sku): bool;
 
-    /**
-     * @param string $sku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return bool
-     */
     public function isNeverOutOfStockForStore(string $sku, StoreTransfer $storeTransfer): bool;
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return bool
-     */
     public function isProductAbstractNeverOutOfStockForStore(string $abstractSku, StoreTransfer $storeTransfer): bool;
 
     /**
@@ -59,28 +42,10 @@ interface StockProductReaderInterface
      */
     public function getStockProductByProductAbstractSkuForStore(string $abstractSku, StoreTransfer $storeTransfer): array;
 
-    /**
-     * @param string $sku
-     * @param string $stockType
-     *
-     * @return bool
-     */
     public function hasStockProduct(string $sku, string $stockType): bool;
 
-    /**
-     * @param string $sku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return bool
-     */
     public function hastStockProductInStore(string $sku, StoreTransfer $storeTransfer): bool;
 
-    /**
-     * @param string $sku
-     * @param string $stockType
-     *
-     * @return int
-     */
     public function getIdStockProduct(string $sku, string $stockType): int;
 
     /**

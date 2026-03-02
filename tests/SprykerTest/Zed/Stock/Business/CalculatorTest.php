@@ -56,9 +56,6 @@ class CalculatorTest extends Unit
      */
     protected $stockEntity2;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -69,18 +66,12 @@ class CalculatorTest extends Unit
         $this->setupStockProductEntity();
     }
 
-    /**
-     * @return void
-     */
     public function testCalculateStock(): void
     {
         $stock = $this->stockFacade->calculateStockForProduct($this->productEntity->getSku());
         $this->assertTrue($stock->equals(30));
     }
 
-    /**
-     * @return void
-     */
     public function testCalculateStockWillCalculateStockOnlyInActiveStocks(): void
     {
         //Arrange
@@ -93,9 +84,6 @@ class CalculatorTest extends Unit
         $this->assertTrue($stock->equals(10));
     }
 
-    /**
-     * @return void
-     */
     protected function setupProductEntity(): void
     {
         $productAbstract = SpyProductAbstractQuery::create()
@@ -147,9 +135,6 @@ class CalculatorTest extends Unit
             ->save();
     }
 
-    /**
-     * @return void
-     */
     protected function setupStockProductEntity(): void
     {
         $this->stockEntity1 = SpyStockQuery::create()

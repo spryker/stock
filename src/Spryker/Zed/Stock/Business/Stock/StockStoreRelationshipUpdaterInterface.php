@@ -11,11 +11,5 @@ use Generated\Shared\Transfer\StoreRelationTransfer;
 
 interface StockStoreRelationshipUpdaterInterface
 {
-    /**
-     * @param int $idStock
-     * @param \Generated\Shared\Transfer\StoreRelationTransfer|null $storeRelationTransfer
-     *
-     * @return void
-     */
     public function updateStockStoreRelationshipsForStock(int $idStock, ?StoreRelationTransfer $storeRelationTransfer): void;
 }

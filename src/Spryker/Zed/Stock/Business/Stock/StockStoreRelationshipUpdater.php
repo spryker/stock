@@ -26,22 +26,12 @@ class StockStoreRelationshipUpdater implements StockStoreRelationshipUpdaterInte
      */
     protected $stockEntityManager;
 
-    /**
-     * @param \Spryker\Zed\Stock\Persistence\StockRepositoryInterface $stockRepository
-     * @param \Spryker\Zed\Stock\Persistence\StockEntityManagerInterface $stockEntityManager
-     */
     public function __construct(StockRepositoryInterface $stockRepository, StockEntityManagerInterface $stockEntityManager)
     {
         $this->stockRepository = $stockRepository;
         $this->stockEntityManager = $stockEntityManager;
     }
 
-    /**
-     * @param int $idStock
-     * @param \Generated\Shared\Transfer\StoreRelationTransfer|null $storeRelationTransfer
-     *
-     * @return void
-     */
     public function updateStockStoreRelationshipsForStock(int $idStock, ?StoreRelationTransfer $storeRelationTransfer): void
     {
         if ($storeRelationTransfer === null) {
@@ -53,12 +43,6 @@ class StockStoreRelationshipUpdater implements StockStoreRelationshipUpdaterInte
         });
     }
 
-    /**
-     * @param int $idStock
-     * @param \Generated\Shared\Transfer\StoreRelationTransfer $storeRelationTransfer
-     *
-     * @return void
-     */
     protected function executeUpdateStockStoreRelationshipTransaction(int $idStock, StoreRelationTransfer $storeRelationTransfer): void
     {
         $storeRelationTransfer->requireIdStores();

@@ -30,12 +30,6 @@ class StockProductMapper
         return $stockProductTransfers;
     }
 
-    /**
-     * @param \Orm\Zed\Stock\Persistence\SpyStockProduct $stockProductEntity
-     * @param \Generated\Shared\Transfer\StockProductTransfer $stockProductTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockProductTransfer
-     */
     public function mapStockProductEntityToStockProductTransfer(
         SpyStockProduct $stockProductEntity,
         StockProductTransfer $stockProductTransfer

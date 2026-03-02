@@ -162,11 +162,6 @@ class StockReader implements StockReaderInterface
         return $this->executeStockCollectionExpanderPlugins($stockCollectionTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockCriteriaTransfer $stockCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockCollectionTransfer
-     */
     public function getStockCollection(StockCriteriaTransfer $stockCriteriaTransfer): StockCollectionTransfer
     {
         $stockCollectionTransfer = $this->stockRepository->getStockCollection($stockCriteriaTransfer);
@@ -174,11 +169,6 @@ class StockReader implements StockReaderInterface
         return $this->executeStockCollectionExpanderPlugins($stockCollectionTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockCollectionTransfer $stockCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockCollectionTransfer
-     */
     protected function executeStockCollectionExpanderPlugins(StockCollectionTransfer $stockCollectionTransfer): StockCollectionTransfer
     {
         foreach ($this->stockCollectionExpanderPlugins as $stockCollectionExpanderPlugin) {

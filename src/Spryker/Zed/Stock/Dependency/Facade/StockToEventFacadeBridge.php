@@ -25,12 +25,6 @@ class StockToEventFacadeBridge implements StockToEventFacadeInterface
         $this->eventFacade = $eventFacade;
     }
 
-    /**
-     * @param string $eventName
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $eventTransfer
-     *
-     * @return void
-     */
     public function trigger(string $eventName, TransferInterface $eventTransfer): void
     {
         $this->eventFacade->trigger($eventName, $eventTransfer);

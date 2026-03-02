@@ -42,49 +42,31 @@ class StockPersistenceFactory extends AbstractPersistenceFactory
         return SpyStockQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Stock\Persistence\SpyStockStoreQuery
-     */
     public function createStockStoreQuery(): SpyStockStoreQuery
     {
         return SpyStockStoreQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Persistence\Propel\Mapper\StockMapper
-     */
     public function createStockMapper(): StockMapper
     {
         return new StockMapper($this->createStockStoreRelationMapper());
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Persistence\Propel\Mapper\StockStoreRelationMapper
-     */
     public function createStockStoreRelationMapper(): StockStoreRelationMapper
     {
         return new StockStoreRelationMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Persistence\Propel\Mapper\StockProductMapper
-     */
     public function createStockProductMapper(): StockProductMapper
     {
         return new StockProductMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Persistence\Propel\Mapper\StoreMapper
-     */
     public function createStoreMapper(): StoreMapper
     {
         return new StoreMapper();
     }
 
-    /**
-     * @return \Orm\Zed\Store\Persistence\SpyStoreQuery
-     */
     public function getStoreQuery(): SpyStoreQuery
     {
         return $this->getProvidedDependency(StockDependencyProvider::PROPEL_QUERY_STORE);

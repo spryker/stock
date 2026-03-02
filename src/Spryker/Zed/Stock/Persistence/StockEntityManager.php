@@ -16,11 +16,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class StockEntityManager extends AbstractEntityManager implements StockEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer
-     */
     public function saveStock(StockTransfer $stockTransfer): StockTransfer
     {
         $stockEntity = $this->getFactory()

@@ -22,25 +22,16 @@ class StockToPropelConnectionAdapter implements StockToConnectionInterface
         $this->propelConnection = $propelConnection;
     }
 
-    /**
-     * @return bool
-     */
     public function beginTransaction(): bool
     {
         return $this->propelConnection->beginTransaction();
     }
 
-    /**
-     * @return bool
-     */
     public function commit(): bool
     {
         return $this->propelConnection->commit();
     }
 
-    /**
-     * @return bool
-     */
     public function rollBack(): bool
     {
         return $this->propelConnection->rollBack();

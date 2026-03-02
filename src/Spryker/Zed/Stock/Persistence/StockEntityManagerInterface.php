@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\StockTransfer;
 
 interface StockEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer
-     */
     public function saveStock(StockTransfer $stockTransfer): StockTransfer;
 
     /**

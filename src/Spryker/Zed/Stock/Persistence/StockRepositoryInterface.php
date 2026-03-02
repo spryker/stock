@@ -30,11 +30,6 @@ interface StockRepositoryInterface
      */
     public function getStockNamesForStore(string $storeName): array;
 
-    /**
-     * @param int $idStock
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer|null
-     */
     public function findStockById(int $idStock): ?StockTransfer;
 
     /**
@@ -44,11 +39,6 @@ interface StockRepositoryInterface
      */
     public function getStocksWithRelatedStoresByCriteriaFilter(StockCriteriaFilterTransfer $stockCriteriaFilterTransfer): array;
 
-    /**
-     * @param string $stockName
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer|null
-     */
     public function findStockByName(string $stockName): ?StockTransfer;
 
     /**
@@ -60,11 +50,6 @@ interface StockRepositoryInterface
      */
     public function getStockProductsByIdStock(int $idStock, ?int $offset = null, ?int $limit = null): array;
 
-    /**
-     * @param int $idStock
-     *
-     * @return \Generated\Shared\Transfer\StoreRelationTransfer
-     */
     public function getStoreRelationByIdStock(int $idStock): StoreRelationTransfer;
 
     /**
@@ -82,12 +67,6 @@ interface StockRepositoryInterface
      */
     public function getStockProductByProductAbstractSkuForStore(string $abstractSku, StoreTransfer $storeTransfer): array;
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return bool
-     */
     public function isProductAbstractNeverOutOfStockForStore(string $abstractSku, StoreTransfer $storeTransfer): bool;
 
     /**
@@ -120,17 +99,7 @@ interface StockRepositoryInterface
      */
     public function getStockTransfersGroupedByIdProductConcrete(array $productConcreteIds): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\StockCriteriaTransfer $stockCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockCollectionTransfer
-     */
     public function getStockCollection(StockCriteriaTransfer $stockCriteriaTransfer): StockCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\StockStoreCriteriaTransfer $stockStoreCollectionCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockStoreCollectionTransfer
-     */
     public function getStockStoreCollection(StockStoreCriteriaTransfer $stockStoreCollectionCriteriaTransfer): StockStoreCollectionTransfer;
 }

@@ -88,11 +88,6 @@ class StockCreator implements StockCreatorInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockResponseTransfer
-     */
     protected function executeCreateStockTransaction(StockTransfer $stockTransfer): StockResponseTransfer
     {
         $stockTransfer = $this->stockEntityManager->saveStock($stockTransfer);
@@ -108,11 +103,6 @@ class StockCreator implements StockCreatorInterface
         return $this->executeStockPostCreatePlugins($stockTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return void
-     */
     protected function insertActiveTouchRecordStockType(StockTransfer $stockTransfer): void
     {
         $this->touchFacade->touchActive(
@@ -121,11 +111,6 @@ class StockCreator implements StockCreatorInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockResponseTransfer
-     */
     protected function executeStockPostCreatePlugins(StockTransfer $stockTransfer): StockResponseTransfer
     {
         foreach ($this->stockPostCreatePlugins as $stockPostCreatePlugin) {

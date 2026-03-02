@@ -92,11 +92,6 @@ class StockDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = $this->addStorePropelQuery($container);
@@ -118,11 +113,6 @@ class StockDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStockUpdatePlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_STOCK_UPDATE, function (Container $container) {
@@ -132,11 +122,6 @@ class StockDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT, function (Container $container) {
@@ -146,11 +131,6 @@ class StockDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addTouchFacade(Container $container): Container
     {
         $container->set(static::FACADE_TOUCH, function (Container $container) {
@@ -160,11 +140,6 @@ class StockDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStorePropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_QUERY_STORE, $container->factory(function () {
@@ -174,11 +149,6 @@ class StockDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConnection(Container $container): Container
     {
         $container->set(static::CONNECTION, function () {
@@ -188,11 +158,6 @@ class StockDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addEventFacade(Container $container): Container
     {
         $container->set(static::FACADE_EVENT, function (Container $container) {
@@ -204,11 +169,6 @@ class StockDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStockCollectionExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_STOCK_COLLECTION_EXPANDER, function () {
@@ -218,11 +178,6 @@ class StockDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStockPostCreatePlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_STOCK_POST_CREATE, function () {
@@ -232,11 +187,6 @@ class StockDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStockPostUpdatePlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_STOCK_POST_UPDATE, function () {

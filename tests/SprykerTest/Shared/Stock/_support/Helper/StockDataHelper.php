@@ -58,12 +58,6 @@ class StockDataHelper extends Module
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param array $seedData
-     *
-     * @return void
-     */
     public function haveProductInStockForStore(StoreTransfer $storeTransfer, array $seedData = []): void
     {
         $stockTransfer = $this->haveStock([
@@ -76,11 +70,6 @@ class StockDataHelper extends Module
         $this->createStockProduct($seedData);
     }
 
-    /**
-     * @param array $seedData
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer
-     */
     public function haveStock(array $seedData = []): StockTransfer
     {
         $stockTransfer = (new StockBuilder($seedData))->build();
@@ -113,11 +102,6 @@ class StockDataHelper extends Module
         return $stockTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer
-     */
     public function updateStock(StockTransfer $stockTransfer): StockTransfer
     {
         /** @var \Orm\Zed\Stock\Persistence\SpyStock $stockEntity */
@@ -129,12 +113,6 @@ class StockDataHelper extends Module
         return $stockTransfer->fromArray($stockEntity->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreRelationTransfer
-     */
     public function haveStockStoreRelation(StockTransfer $stockTransfer, StoreTransfer $storeTransfer): StoreRelationTransfer
     {
         $stockTransfer->requireIdStock();
@@ -162,21 +140,11 @@ class StockDataHelper extends Module
             ->setStores(new ArrayObject([$storeTransfer]));
     }
 
-    /**
-     * @param array $seedData
-     *
-     * @return \Generated\Shared\Transfer\StockProductTransfer
-     */
     public function haveStockProduct(array $seedData = []): StockProductTransfer
     {
         return $this->createStockProduct($seedData);
     }
 
-    /**
-     * @param array $seedData
-     *
-     * @return \Generated\Shared\Transfer\StockProductTransfer
-     */
     protected function createStockProduct(array $seedData): StockProductTransfer
     {
         $stockFacade = $this->getStockFacade();
@@ -197,19 +165,11 @@ class StockDataHelper extends Module
         return $stockProductTransfer->setIdStockProduct($idStockProduct);
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Business\StockFacadeInterface
-     */
     protected function getStockFacade(): StockFacadeInterface
     {
         return $this->getLocator()->stock()->facade();
     }
 
-    /**
-     * @param int $idStockProduct
-     *
-     * @return void
-     */
     protected function cleanUpStockProduct(int $idStockProduct): void
     {
         SpyStockProductQuery::create()

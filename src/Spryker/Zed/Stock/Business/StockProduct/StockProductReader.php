@@ -55,13 +55,6 @@ class StockProductReader implements StockProductReaderInterface
      */
     protected $transferMapper;
 
-    /**
-     * @param \Spryker\Zed\Stock\Dependency\Facade\StockToProductInterface $productFacade
-     * @param \Spryker\Zed\Stock\Business\Stock\StockReaderInterface $stockReader
-     * @param \Spryker\Zed\Stock\Persistence\StockQueryContainerInterface $queryContainer
-     * @param \Spryker\Zed\Stock\Persistence\StockRepositoryInterface $stockRepository
-     * @param \Spryker\Zed\Stock\Business\Transfer\StockProductTransferMapperInterface $transferMapper
-     */
     public function __construct(
         StockToProductInterface $productFacade,
         StockReaderInterface $stockReader,
@@ -76,11 +69,6 @@ class StockProductReader implements StockProductReaderInterface
         $this->transferMapper = $transferMapper;
     }
 
-    /**
-     * @param string $sku
-     *
-     * @return bool
-     */
     public function isNeverOutOfStock(string $sku): bool
     {
         $idProduct = $this->productFacade->findProductConcreteIdBySku($sku);
@@ -91,12 +79,6 @@ class StockProductReader implements StockProductReaderInterface
             ->exists();
     }
 
-    /**
-     * @param string $sku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return bool
-     */
     public function isNeverOutOfStockForStore(string $sku, StoreTransfer $storeTransfer): bool
     {
         $idProduct = $this->productFacade->findProductConcreteIdBySku($sku);
@@ -108,12 +90,6 @@ class StockProductReader implements StockProductReaderInterface
             ->exists();
     }
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return bool
-     */
     public function isProductAbstractNeverOutOfStockForStore(string $abstractSku, StoreTransfer $storeTransfer): bool
     {
         $storeTransfer->requireName();
@@ -157,12 +133,6 @@ class StockProductReader implements StockProductReaderInterface
         return $this->stockRepository->getStockProductByProductAbstractSkuForStore($abstractSku, $storeTransfer);
     }
 
-    /**
-     * @param string $sku
-     * @param string $stockType
-     *
-     * @return bool
-     */
     public function hasStockProduct(string $sku, string $stockType): bool
     {
         return $this->queryContainer
@@ -171,12 +141,6 @@ class StockProductReader implements StockProductReaderInterface
             ->exists();
     }
 
-    /**
-     * @param string $sku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return bool
-     */
     public function hastStockProductInStore(string $sku, StoreTransfer $storeTransfer): bool
     {
         $storeWarehouseMapping = $this->getStoreWarehouses($storeTransfer->getName());
@@ -217,11 +181,6 @@ class StockProductReader implements StockProductReaderInterface
         return $stockProductEntity->getIdStockProduct();
     }
 
-    /**
-     * @param string $sku
-     *
-     * @return int|null
-     */
     public function findProductAbstractIdBySku(string $sku): ?int
     {
         return $this->productFacade->findProductAbstractIdBySku($sku);

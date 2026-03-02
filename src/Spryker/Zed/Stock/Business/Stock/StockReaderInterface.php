@@ -43,11 +43,6 @@ interface StockReaderInterface
      */
     public function getStoreToWarehouseMapping(): array;
 
-    /**
-     * @param string $stockType
-     *
-     * @return int
-     */
     public function getStockTypeIdByName(string $stockType): int;
 
     /**
@@ -59,10 +54,5 @@ interface StockReaderInterface
      */
     public function getStocksByStockCriteriaFilter(StockCriteriaFilterTransfer $stockCriteriaFilterTransfer): StockCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\StockCriteriaTransfer $stockCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockCollectionTransfer
-     */
     public function getStockCollection(StockCriteriaTransfer $stockCriteriaTransfer): StockCollectionTransfer;
 }

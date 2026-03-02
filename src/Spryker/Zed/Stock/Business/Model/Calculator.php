@@ -18,19 +18,11 @@ class Calculator implements CalculatorInterface
      */
     protected $stockProductReader;
 
-    /**
-     * @param \Spryker\Zed\Stock\Business\StockProduct\StockProductReaderInterface $stockProductReader
-     */
     public function __construct(StockProductReaderInterface $stockProductReader)
     {
         $this->stockProductReader = $stockProductReader;
     }
 
-    /**
-     * @param string $sku
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function calculateStockForProduct(string $sku): Decimal
     {
         $stockProductTransfers = $this->stockProductReader->getStocksProduct($sku);
@@ -38,12 +30,6 @@ class Calculator implements CalculatorInterface
         return $this->calculateTotalQuantity($stockProductTransfers);
     }
 
-    /**
-     * @param string $sku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function calculateProductStockForStore(string $sku, StoreTransfer $storeTransfer): Decimal
     {
         $stockProductTransfers = $this->stockProductReader->findProductStocksForStore($sku, $storeTransfer);
@@ -51,12 +37,6 @@ class Calculator implements CalculatorInterface
         return $this->calculateTotalQuantity($stockProductTransfers);
     }
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function calculateProductAbstractStockForStore(string $abstractSku, StoreTransfer $storeTransfer): Decimal
     {
         $stockProductTransfers = $this->stockProductReader->getStockProductByProductAbstractSkuForStore($abstractSku, $storeTransfer);

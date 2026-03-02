@@ -47,9 +47,6 @@ class StockBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Business\Stock\StockReaderInterface
-     */
     public function createStockReader(): StockReaderInterface
     {
         return new StockReader(
@@ -60,9 +57,6 @@ class StockBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Business\StockProduct\StockProductReaderInterface
-     */
     public function createStockProductReader(): StockProductReaderInterface
     {
         return new StockProductReader(
@@ -88,9 +82,6 @@ class StockBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Business\Stock\StockCreatorInterface
-     */
     public function createStockCreator(): StockCreatorInterface
     {
         return new StockCreator(
@@ -101,9 +92,6 @@ class StockBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Business\Stock\StockUpdaterInterface
-     */
     public function createStockUpdater(): StockUpdaterInterface
     {
         return new StockUpdater(
@@ -118,9 +106,6 @@ class StockBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Business\Stock\StockStoreRelationshipUpdaterInterface
-     */
     public function createStockStoreRelationshipUpdater(): StockStoreRelationshipUpdaterInterface
     {
         return new StockStoreRelationshipUpdater(
@@ -129,9 +114,6 @@ class StockBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Business\StockProduct\StockProductUpdaterInterface
-     */
     public function createStockProductUpdater(): StockProductUpdaterInterface
     {
         return new StockProductUpdater(
@@ -140,9 +122,6 @@ class StockBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Business\Stock\StockMapperInterface
-     */
     public function createStockMapper(): StockMapperInterface
     {
         return new StockMapper();
@@ -188,9 +167,6 @@ class StockBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(StockDependencyProvider::FACADE_STORE);
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Dependency\External\StockToConnectionInterface
-     */
     public function getConnection(): StockToConnectionInterface
     {
         return $this->getProvidedDependency(StockDependencyProvider::CONNECTION);
@@ -220,9 +196,6 @@ class StockBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(StockDependencyProvider::PLUGINS_STOCK_POST_UPDATE);
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Dependency\Facade\StockToEventFacadeBridge
-     */
     public function getEventFacade(): StockToEventFacadeBridge
     {
         return $this->getProvidedDependency(StockDependencyProvider::FACADE_EVENT);

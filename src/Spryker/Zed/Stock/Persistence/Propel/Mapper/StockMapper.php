@@ -19,9 +19,6 @@ class StockMapper
      */
     protected $stockStoreRelationMapper;
 
-    /**
-     * @param \Spryker\Zed\Stock\Persistence\Propel\Mapper\StockStoreRelationMapper $stockStoreRelationMapper
-     */
     public function __construct(StockStoreRelationMapper $stockStoreRelationMapper)
     {
         $this->stockStoreRelationMapper = $stockStoreRelationMapper;
@@ -42,12 +39,6 @@ class StockMapper
         return $stockTransfers;
     }
 
-    /**
-     * @param \Orm\Zed\Stock\Persistence\SpyStock $stockEntity
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer
-     */
     public function mapStockEntityToStockTransfer(SpyStock $stockEntity, StockTransfer $stockTransfer): StockTransfer
     {
         $stockTransfer->fromArray($stockEntity->toArray(), true);
@@ -62,12 +53,6 @@ class StockMapper
         return $stockTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     * @param \Orm\Zed\Stock\Persistence\SpyStock $stockEntity
-     *
-     * @return \Orm\Zed\Stock\Persistence\SpyStock
-     */
     public function mapStockTransferToStockEntity(StockTransfer $stockTransfer, SpyStock $stockEntity): SpyStock
     {
         $stockEntity->fromArray($stockTransfer->modifiedToArray());

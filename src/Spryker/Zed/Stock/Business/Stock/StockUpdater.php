@@ -98,11 +98,6 @@ class StockUpdater implements StockUpdaterInterface
         $this->eventFacade = $eventFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockResponseTransfer
-     */
     public function updateStock(StockTransfer $stockTransfer): StockResponseTransfer
     {
         /** @var \Generated\Shared\Transfer\StockResponseTransfer $stockResponseTransfer */
@@ -126,11 +121,6 @@ class StockUpdater implements StockUpdaterInterface
         return $stockResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockResponseTransfer
-     */
     protected function executeUpdateStockTransaction(StockTransfer $stockTransfer): StockResponseTransfer
     {
         $existingStockTransfer = $this->findExistingStockRecord($stockTransfer);
@@ -166,11 +156,6 @@ class StockUpdater implements StockUpdaterInterface
         return $this->executeStockPostUpdatePlugins($stockTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return void
-     */
     protected function insertActiveTouchRecordStockType(StockTransfer $stockTransfer): void
     {
         $this->touchFacade->touchActive(
@@ -179,11 +164,6 @@ class StockUpdater implements StockUpdaterInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockResponseTransfer
-     */
     protected function executeStockPostUpdatePlugins(StockTransfer $stockTransfer): StockResponseTransfer
     {
         foreach ($this->stockPostUpdatePlugins as $stockPostUpdatePlugin) {
@@ -201,11 +181,6 @@ class StockUpdater implements StockUpdaterInterface
             ->setIsSuccessful(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer|null
-     */
     protected function findExistingStockRecord(StockTransfer $stockTransfer): ?StockTransfer
     {
         $existingStockTransfer = $this->stockRepository->findStockById((int)$stockTransfer->getIdStockOrFail());
@@ -259,12 +234,6 @@ class StockUpdater implements StockUpdaterInterface
         return $changedProperties;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $existingStockTransfer
-     * @param \Generated\Shared\Transfer\StockTransfer $newStockTransfer
-     *
-     * @return bool
-     */
     protected function isOnlyNameChanged(StockTransfer $existingStockTransfer, StockTransfer $newStockTransfer): bool
     {
         $changedProperties = $this->getChangedProperties($existingStockTransfer, $newStockTransfer);
@@ -272,12 +241,6 @@ class StockUpdater implements StockUpdaterInterface
         return count($changedProperties) === 1 && in_array(StockTransfer::NAME, $changedProperties, true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $existingStockTransfer
-     * @param \Generated\Shared\Transfer\StockTransfer $newStockTransfer
-     *
-     * @return bool
-     */
     protected function hasStoreRelationChanged(StockTransfer $existingStockTransfer, StockTransfer $newStockTransfer): bool
     {
         $changedProperties = $this->getChangedProperties($existingStockTransfer, $newStockTransfer);

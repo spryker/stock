@@ -71,12 +71,6 @@ class StockStoreRelationMapper
         return $storeTransfers;
     }
 
-    /**
-     * @param \Orm\Zed\Store\Persistence\SpyStore $storeEntity
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     protected function mapStoreEntityToStoreTransfer(SpyStore $storeEntity, StoreTransfer $storeTransfer): StoreTransfer
     {
         return $storeTransfer->fromArray($storeEntity->toArray(), true);

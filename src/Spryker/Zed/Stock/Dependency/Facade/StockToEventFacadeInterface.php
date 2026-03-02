@@ -11,11 +11,5 @@ use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
 interface StockToEventFacadeInterface
 {
-    /**
-     * @param string $eventName
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $eventTransfer
-     *
-     * @return void
-     */
     public function trigger(string $eventName, TransferInterface $eventTransfer): void;
 }

@@ -39,11 +39,6 @@ class PostUpdateStockRelationsEventSubscriber extends AbstractPlugin implements 
         return $eventCollection;
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addPostUpdateStockRelationsListener(EventCollectionInterface $eventCollection): void
     {
         $eventCollection->addListenerQueued(

@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\StockTransfer;
 
 interface StockProductUpdaterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return void
-     */
     public function updateStockProductsRelatedToStock(StockTransfer $stockTransfer): void;
 }

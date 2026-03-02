@@ -49,9 +49,6 @@ class ReaderTest extends Unit
      */
     protected $stockQueryContainer;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -60,9 +57,6 @@ class ReaderTest extends Unit
         $this->stockQueryContainer = new StockQueryContainer();
     }
 
-    /**
-     * @return void
-     */
     public function testIsNeverOutOfStock(): void
     {
         $this->setTestData();
@@ -74,9 +68,6 @@ class ReaderTest extends Unit
         $this->assertTrue($isNeverOutOfStock);
     }
 
-    /**
-     * @return void
-     */
     protected function setTestData(): void
     {
         $productAbstract = SpyProductAbstractQuery::create()

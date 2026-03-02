@@ -12,26 +12,9 @@ use Spryker\DecimalObject\Decimal;
 
 interface CalculatorInterface
 {
-    /**
-     * @param string $sku
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function calculateStockForProduct(string $sku): Decimal;
 
-    /**
-     * @param string $sku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function calculateProductStockForStore(string $sku, StoreTransfer $storeTransfer): Decimal;
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function calculateProductAbstractStockForStore(string $abstractSku, StoreTransfer $storeTransfer): Decimal;
 }

@@ -144,9 +144,6 @@ class StockFacadeTest extends Unit
 
     public const STOCK_QUANTITY_2 = 8.2;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -155,9 +152,6 @@ class StockFacadeTest extends Unit
         $this->setupData();
     }
 
-    /**
-     * @return void
-     */
     public function testIsNeverOutOfStockShouldReturnFalse(): void
     {
         $isNeverOutOfStock = $this->stockFacade->isNeverOutOfStock(static::CONCRETE_SKU);
@@ -165,9 +159,6 @@ class StockFacadeTest extends Unit
         $this->assertFalse($isNeverOutOfStock);
     }
 
-    /**
-     * @return void
-     */
     public function testIsNeverOutOfStockShouldReturnTrue(): void
     {
         $this->productStockEntity1->setIsNeverOutOfStock(true);
@@ -179,9 +170,6 @@ class StockFacadeTest extends Unit
         $this->assertTrue($isNeverOutOfStock);
     }
 
-    /**
-     * @return void
-     */
     public function testIsProductAbstractNeverOutOfStockForStoreShouldReturnTrueWhenOneOfTheConcreteProductsIsNeverOutOfStock(): void
     {
         //Arrange
@@ -198,9 +186,6 @@ class StockFacadeTest extends Unit
         $this->assertTrue($isNeverOutOfStock);
     }
 
-    /**
-     * @return void
-     */
     public function testIsProductAbstractNeverOutOfStockForStoreShouldReturnFalseWhenNoneOfTheConcreteProductsIsNeverOutOfStock(): void
     {
         //Arrange
@@ -217,9 +202,6 @@ class StockFacadeTest extends Unit
         $this->assertFalse($isNeverOutOfStock);
     }
 
-    /**
-     * @return void
-     */
     public function testCalculateStockForProductShouldCheckAllStocks(): void
     {
         $productStock = $this->stockFacade->calculateStockForProduct(static::CONCRETE_SKU);
@@ -227,9 +209,6 @@ class StockFacadeTest extends Unit
         $this->assertTrue($productStock->equals('100.2'));
     }
 
-    /**
-     * @return void
-     */
     public function testCalculateProductAbstractStockForStoreWillCalculateStockOfAllConcreteProductsOfAbstractProduct(): void
     {
         //Act
@@ -242,9 +221,6 @@ class StockFacadeTest extends Unit
         $this->assertTrue($productAbstractStock->equals(static::STOCK_QUANTITY_1));
     }
 
-    /**
-     * @return void
-     */
     public function testCreateStockType(): void
     {
         $stockTypeTransfer = (new TypeTransfer())
@@ -259,9 +235,6 @@ class StockFacadeTest extends Unit
         $this->assertTrue($exists);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateStockProduct(): void
     {
         $productAbstractEntity = new SpyProductAbstract();
@@ -291,9 +264,6 @@ class StockFacadeTest extends Unit
         $this->assertSame('92.0000000000', $stockProductEntity->getQuantity());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateStockProductShouldThrowException(): void
     {
         // Arrange
@@ -310,9 +280,6 @@ class StockFacadeTest extends Unit
         $this->stockFacade->createStockProduct($stockProductTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStockProduct(): void
     {
         $stockProductTransfer = (new StockProductTransfer())
@@ -330,9 +297,6 @@ class StockFacadeTest extends Unit
         $this->assertSame('555.0000000000', $stockProductEntity->getQuantity());
     }
 
-    /**
-     * @return void
-     */
     public function testDecrementStockShouldReduceStockSize(): void
     {
         $this->stockFacade->decrementStockProduct(
@@ -346,9 +310,6 @@ class StockFacadeTest extends Unit
         $this->assertTrue($stockSize->equals('90.2'));
     }
 
-    /**
-     * @return void
-     */
     public function testIncrementStockShouldIncreaseStockSize(): void
     {
         $this->stockFacade->incrementStockProduct(
@@ -362,9 +323,6 @@ class StockFacadeTest extends Unit
         $this->assertTrue($stockSize->equals('110.2'));
     }
 
-    /**
-     * @return void
-     */
     public function testHasStockProductShouldReturnTrue(): void
     {
         $exists = $this->stockFacade->hasStockProduct(
@@ -375,9 +333,6 @@ class StockFacadeTest extends Unit
         $this->assertTrue($exists);
     }
 
-    /**
-     * @return void
-     */
     public function testHasStockProductShouldReturnFalse(): void
     {
         $exists = $this->stockFacade->hasStockProduct(
@@ -388,9 +343,6 @@ class StockFacadeTest extends Unit
         $this->assertFalse($exists);
     }
 
-    /**
-     * @return void
-     */
     public function testPersistStockProductCollection(): void
     {
         $increment = 20;
@@ -428,9 +380,6 @@ class StockFacadeTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testExpandProductConcreteWithStocks(): void
     {
         $productConcreteTransfer = (new ProductConcreteTransfer())
@@ -446,9 +395,6 @@ class StockFacadeTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testExpandProductConcreteTransfersWithStocksSuccessful(): void
     {
         // Arrange
@@ -473,9 +419,6 @@ class StockFacadeTest extends Unit
         $this->assertEmpty($productConcreteTransfers[1]->getStocks());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandProductConcreteWithStocksWillExpandOnlyWithActiveStocks(): void
     {
         //Arrange
@@ -494,9 +437,6 @@ class StockFacadeTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testGetAvailableStockTypesWillReturnCollectionOfStockNamesIndexedByStoreNames(): void
     {
         //Arrange
@@ -512,9 +452,6 @@ class StockFacadeTest extends Unit
         $this->assertContains($this->stockTransfer2->getName(), $stocks, 'Available stock types collection does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetStockProductsByIdProductWillReturnStockProductWhereStockIsActive(): void
     {
         //Arrange
@@ -536,9 +473,6 @@ class StockFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetStockTypesForStoreWillReturnCollectionOfStockNamesIndexedByStockName(): void
     {
         //Act
@@ -550,9 +484,6 @@ class StockFacadeTest extends Unit
         $this->assertContains($this->stockTransfer1->getName(), $stockCollection, 'Stock types collection does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetWarehouseToStoreMappingWillReturnCollectionOfStocksWithCollectionOfStoresNamesIndexedByStoresName(): void
     {
         //Arrange
@@ -577,9 +508,6 @@ class StockFacadeTest extends Unit
         ], $stockCollection[$this->stockTransfer2->getName()], 'Warehouse to store mapping collection does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetStoreToWarehouseMappingWillReturnCollectionOfStoreNamesWithCollectionOfStockNamesIndexedByStockName(): void
     {
         //Arrange
@@ -620,9 +548,6 @@ class StockFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFindStockProductsByIdProductForStoreWillReturnCollectionOfStockProducts(): void
     {
         //Arrange
@@ -646,9 +571,6 @@ class StockFacadeTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testFindStockProductsByIdProductForStoreWillReturnCollectionOfStockProductsWithInactiveStocksIncluded(): void
     {
         //Arrange
@@ -673,9 +595,6 @@ class StockFacadeTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testGetStoresWhereProductStockIsDefinedWillReturnArrayOfStoreTransfers(): void
     {
         //Act
@@ -700,9 +619,6 @@ class StockFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFindStockByNameWillFindExistingStock(): void
     {
         //Act
@@ -713,9 +629,6 @@ class StockFacadeTest extends Unit
         $this->assertSame($stockTransfer->getName(), $this->stockTransfer1->getName(), 'Stock name does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testFindStockByNameWillReturnNullForNonExistedStockName(): void
     {
         //Act
@@ -725,9 +638,6 @@ class StockFacadeTest extends Unit
         $this->assertNull($result, 'Result should be null.');
     }
 
-    /**
-     * @return void
-     */
     public function testCreateStockWillCreateStock(): void
     {
         //Arrange
@@ -745,9 +655,6 @@ class StockFacadeTest extends Unit
         $this->assertSame($originStockTransfer->getIsActive(), $stockTransfer->getIsActive(), 'Stock active status does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testCreateStockWithRelationToStoreWillCreateStockWithRelations(): void
     {
         //Arrange
@@ -776,9 +683,6 @@ class StockFacadeTest extends Unit
         $this->assertContains($stockTransfer->getName(), $storeStockRelation, 'Store relation does not contain expected store name.');
     }
 
-    /**
-     * @return void
-     */
     public function testFindStockByIdShouldReturnStockTransferForExistingStockId(): void
     {
         //Act
@@ -790,9 +694,6 @@ class StockFacadeTest extends Unit
         $this->assertSame($this->stockTransfer1->getIsActive(), $stockTransfer->getIsActive(), 'Stock active status does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testFindStockByIdShouldReturnNullForNonExistingStockId(): void
     {
         //Act
@@ -802,9 +703,6 @@ class StockFacadeTest extends Unit
         $this->assertNull($result, 'The result must be null');
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStockShouldUpdateStockName(): void
     {
         //Arrange
@@ -821,9 +719,6 @@ class StockFacadeTest extends Unit
         $this->assertSame($newStockName, $stockTransfer->getName(), 'Stock name does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStockShouldUpdateStockStatus(): void
     {
         //Arrange
@@ -839,9 +734,6 @@ class StockFacadeTest extends Unit
         $this->assertSame($originStockTransfer->getIsActive(), $stockTransfer->getIsActive(), 'Stock active status does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStockShouldAddStoreRelations(): void
     {
         //Arrange
@@ -860,9 +752,6 @@ class StockFacadeTest extends Unit
         $this->assertContains($stockTransfer->getName(), $storeStockRelation, 'Store relation does not contain expected store name.');
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStockShouldRemoveStoreRelations(): void
     {
         //Arrange
@@ -880,9 +769,6 @@ class StockFacadeTest extends Unit
         $this->assertNotContains($stockTransfer->getName(), $storeStockRelation, 'Store relation should not contain store name.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetStocksByStockCriteriaFilterWillFilterStocksByName(): void
     {
         // Arrange
@@ -902,9 +788,6 @@ class StockFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetStocksByStockCriteriaFilterWillReturnEmptyCollectionForNonExistingStockName(): void
     {
         // Arrange
@@ -917,9 +800,6 @@ class StockFacadeTest extends Unit
         $this->assertCount(0, $stockCollectionTransfer->getStocks(), 'Stocks count does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetStocksByStockCriteriaFilterWillReturnEmptyCollectionForNonExistingStockId(): void
     {
         // Arrange
@@ -932,9 +812,6 @@ class StockFacadeTest extends Unit
         $this->assertCount(0, $stockCollectionTransfer->getStocks(), 'Stocks count does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetStocksByStockCriteriaFilterWillFilterStocksByActiveStatus(): void
     {
         // Arrange
@@ -953,9 +830,6 @@ class StockFacadeTest extends Unit
         $this->assertTrue(in_array($this->stockEntity2->getName(), $resultStockNames, true), 'Expected stock name is missing in returned stock collection.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetStocksByStockCriteriaFilterWillFilterStocksByStoreName(): void
     {
         // Arrange
@@ -972,9 +846,6 @@ class StockFacadeTest extends Unit
         $this->assertCount(count($availableStocksForStore), $stockCollectionTransfer->getStocks(), 'Stocks count does not match expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetStockStoreCollectionSuccessful(): void
     {
         // Arrange
@@ -1007,9 +878,6 @@ class StockFacadeTest extends Unit
         $this->assertTrue(in_array($stockTransferAT->getIdStock(), $stockIdsGroupedByIdStore[$storeTransferAT->getIdStore()]));
     }
 
-    /**
-     * @return void
-     */
     public function testGetStockStoreCollectionWithoutRelation(): void
     {
         // Arrange
@@ -1028,9 +896,6 @@ class StockFacadeTest extends Unit
         $this->assertFalse(isset($stockIdsGroupedByIdStore[$storeTransferTest->getIdStore()]));
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStockShouldNotUpdateStockProductsAndStoreRelationWhenOnlyNameChanged(): void
     {
         // Arrange
@@ -1073,9 +938,6 @@ class StockFacadeTest extends Unit
         $this->assertSame('Changed Name', $response->getStock()->getName());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStockShouldNotUpdateStockProductsAndStoreRelationWhenShouldUpdateStockRelationsAsyncEnabled(): void
     {
         // Arrange
@@ -1124,9 +986,6 @@ class StockFacadeTest extends Unit
         $this->assertSame('Changed Name', $response->getStock()->getName());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStockShouldNotUpdateStockProductsAndStoreRelationWhenShouldUpdateStockRelationsAsyncDisabled(): void
     {
         // Arrange
@@ -1175,9 +1034,6 @@ class StockFacadeTest extends Unit
         $this->assertSame('Changed Name', $response->getStock()->getName());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStockShouldUpdateStockProductsWhenIsActiveChanged(): void
     {
         // Arrange
@@ -1217,9 +1073,6 @@ class StockFacadeTest extends Unit
         $this->assertSame($originStockTransfer->getIsActive(), $response->getStock()->getIsActive());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStockShouldUpdateStoreRelationWhenStoreRelationChanged(): void
     {
         // Arrange
@@ -1266,9 +1119,6 @@ class StockFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     protected function setupData(): void
     {
         $this->storeTransfer = $this->tester->haveStore([
@@ -1318,12 +1168,6 @@ class StockFacadeTest extends Unit
             ->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return void
-     */
     protected function assignStockToStore(StoreTransfer $storeTransfer, StockTransfer $stockTransfer): void
     {
         $this->tester->haveStockStoreRelation(
@@ -1332,12 +1176,6 @@ class StockFacadeTest extends Unit
         );
     }
 
-    /**
-     * @param \Orm\Zed\Stock\Persistence\SpyStock $stockEntity
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer
-     */
     protected function mapStockEntityToStockTransfer(SpyStock $stockEntity, StockTransfer $stockTransfer): StockTransfer
     {
         return $stockTransfer->fromArray($stockEntity->toArray(), true);

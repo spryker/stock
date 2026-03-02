@@ -40,11 +40,6 @@ class StockProductUpdater implements StockProductUpdaterInterface
         $this->stockUpdateHandlerPlugins = $stockUpdateHandlerPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return void
-     */
     public function updateStockProductsRelatedToStock(StockTransfer $stockTransfer): void
     {
         $this->getTransactionHandler()->handleTransaction(function () use ($stockTransfer): void {
@@ -52,11 +47,6 @@ class StockProductUpdater implements StockProductUpdaterInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return void
-     */
     protected function executeUpdateStockProductsRelatedToStockTransaction(StockTransfer $stockTransfer): void
     {
         $offset = 0;
@@ -76,11 +66,6 @@ class StockProductUpdater implements StockProductUpdaterInterface
         } while (count($stockProductTransfers) === static::STOCK_PRODUCT_BATCH_SIZE);
     }
 
-    /**
-     * @param string $sku
-     *
-     * @return void
-     */
     protected function handleStockUpdatePlugins(string $sku): void
     {
         foreach ($this->stockUpdateHandlerPlugins as $stockUpdateHandlerPlugin) {

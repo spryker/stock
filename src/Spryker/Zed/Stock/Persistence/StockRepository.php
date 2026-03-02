@@ -65,11 +65,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
         return $stockStoreQuery->find()->getData();
     }
 
-    /**
-     * @param int $idStock
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer|null
-     */
     public function findStockById(int $idStock): ?StockTransfer
     {
         $stockEntity = $this->getFactory()
@@ -107,11 +102,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
             ->mapStockEntitiesToStockTransfers($stockQuery->find()->getArrayCopy());
     }
 
-    /**
-     * @param string $stockName
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer|null
-     */
     public function findStockByName(string $stockName): ?StockTransfer
     {
         $stockEntity = $this->getFactory()
@@ -154,11 +144,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
             ->mapStockProductEntitiesToStockProductTransfers($stockProductQuery->find()->getArrayCopy());
     }
 
-    /**
-     * @param int $idStock
-     *
-     * @return \Generated\Shared\Transfer\StoreRelationTransfer
-     */
     public function getStoreRelationByIdStock(int $idStock): StoreRelationTransfer
     {
         $stockStoreQuery = $this->getFactory()
@@ -190,12 +175,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
             ->mapStockProductEntitiesToStockProductTransfers($stockProductEntities->getData());
     }
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return bool
-     */
     public function isProductAbstractNeverOutOfStockForStore(string $abstractSku, StoreTransfer $storeTransfer): bool
     {
         return $this->queryStockProductByProductAbstractSkuAndStore($abstractSku, $storeTransfer)
@@ -286,11 +265,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
         return $result;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockStoreCriteriaTransfer $stockStoreCollectionCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockStoreCollectionTransfer
-     */
     public function getStockStoreCollection(StockStoreCriteriaTransfer $stockStoreCollectionCriteriaTransfer): StockStoreCollectionTransfer
     {
         /** @var array<\Orm\Zed\Stock\Persistence\SpyStockStore> $stockStoreEntities */
@@ -307,12 +281,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
             );
     }
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Orm\Zed\Stock\Persistence\SpyStockProductQuery
-     */
     protected function queryStockProductByProductAbstractSkuAndStore(string $abstractSku, StoreTransfer $storeTransfer): SpyStockProductQuery
     {
         /** @phpstan-var \Orm\Zed\Stock\Persistence\SpyStockProductQuery */
@@ -333,12 +301,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
             ->endUse();
     }
 
-    /**
-     * @param string $concreteSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Orm\Zed\Stock\Persistence\SpyStockProductQuery
-     */
     protected function queryStockProductByProductConcreteSkuAndStore(string $concreteSku, StoreTransfer $storeTransfer): SpyStockProductQuery
     {
         /** @phpstan-var \Orm\Zed\Stock\Persistence\SpyStockProductQuery */
@@ -387,11 +349,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
             ->mapStoreEntitiesToStoreTransfers($query->find()->getArrayCopy());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockCriteriaTransfer $stockCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockCollectionTransfer
-     */
     public function getStockCollection(StockCriteriaTransfer $stockCriteriaTransfer): StockCollectionTransfer
     {
         $stockQuery = $this->applyStockCriteriaTransferFilters(
@@ -456,12 +413,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
         return $stockQuery;
     }
 
-    /**
-     * @param \Orm\Zed\Stock\Persistence\SpyStockQuery $stockQuery
-     * @param \Generated\Shared\Transfer\StockCriteriaFilterTransfer $stockCriteriaFilterTransfer
-     *
-     * @return \Orm\Zed\Stock\Persistence\SpyStockQuery
-     */
     protected function applyStockQueryFilters(SpyStockQuery $stockQuery, StockCriteriaFilterTransfer $stockCriteriaFilterTransfer): SpyStockQuery
     {
         if ($stockCriteriaFilterTransfer->getIdStock() !== null) {
@@ -495,11 +446,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
         return $stockQuery;
     }
 
-    /**
-     * @param \Orm\Zed\Stock\Persistence\SpyStockQuery $stockQuery
-     *
-     * @return bool
-     */
     protected function isUuidColumn(SpyStockQuery $stockQuery): bool
     {
         return $stockQuery->getTableMap()->hasColumn(static::COLUMN_UUID);

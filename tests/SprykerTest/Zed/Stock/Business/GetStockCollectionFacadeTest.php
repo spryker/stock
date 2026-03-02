@@ -33,9 +33,6 @@ class GetStockCollectionFacadeTest extends Unit
      */
     protected StockBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testGetStockCollectionReturnsEmptyCollectionWhenNoEntityMatchedByCriteria(): void
     {
         // Arrange
@@ -56,9 +53,6 @@ class GetStockCollectionFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetStockCollectionReturnsStocksByStockIds(): void
     {
         // Arrange
@@ -91,9 +85,6 @@ class GetStockCollectionFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetStockCollectionReturnsStocksByActiveStatus(): void
     {
         // Arrange
@@ -129,9 +120,6 @@ class GetStockCollectionFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetStockCollectionReturnsStocksByName(): void
     {
         // Arrange
@@ -164,9 +152,6 @@ class GetStockCollectionFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetStockCollectionReturnsStocksByStoreName(): void
     {
         // Arrange
