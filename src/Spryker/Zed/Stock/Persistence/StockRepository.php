@@ -286,6 +286,8 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
         /** @phpstan-var \Orm\Zed\Stock\Persistence\SpyStockProductQuery */
         return $this->getFactory()
             ->createStockProductQuery()
+            ->leftJoinWithSpyProduct()
+            ->leftJoinWithStock()
             ->useSpyProductQuery(null, Criteria::LEFT_JOIN)
                 ->useSpyProductAbstractQuery(null, Criteria::LEFT_JOIN)
                     ->filterBySku($abstractSku)
