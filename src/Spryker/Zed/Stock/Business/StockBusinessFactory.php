@@ -8,6 +8,8 @@
 namespace Spryker\Zed\Stock\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use Spryker\Zed\Stock\Business\Expander\ReservationRequestExpander;
+use Spryker\Zed\Stock\Business\Expander\ReservationRequestExpanderInterface;
 use Spryker\Zed\Stock\Business\Model\Calculator;
 use Spryker\Zed\Stock\Business\Model\Writer;
 use Spryker\Zed\Stock\Business\Stock\StockCreator;
@@ -125,6 +127,13 @@ class StockBusinessFactory extends AbstractBusinessFactory
     public function createStockMapper(): StockMapperInterface
     {
         return new StockMapper();
+    }
+
+    public function createReservationRequestExpander(): ReservationRequestExpanderInterface
+    {
+        return new ReservationRequestExpander(
+            $this->createStockReader(),
+        );
     }
 
     /**

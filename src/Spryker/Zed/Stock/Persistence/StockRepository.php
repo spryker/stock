@@ -366,14 +366,6 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
             );
     }
 
-    /**
-     * @module Store
-     *
-     * @param \Orm\Zed\Stock\Persistence\SpyStockQuery $stockQuery
-     * @param \Generated\Shared\Transfer\StockCriteriaTransfer $stockCriteriaTransfer
-     *
-     * @return \Orm\Zed\Stock\Persistence\SpyStockQuery
-     */
     protected function applyStockCriteriaTransferFilters(
         SpyStockQuery $stockQuery,
         StockCriteriaTransfer $stockCriteriaTransfer
@@ -409,6 +401,14 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
                     ->useStoreQuery(null, Criteria::LEFT_JOIN)
                         ->filterByName_In($storeNames)
                     ->endUse()
+                ->endUse();
+        }
+
+        if ($stockConditionsTransfer->getProductConcreteSkus() !== []) {
+            $stockQuery->useStockProductQuery(null, Criteria::LEFT_JOIN)
+                ->useSpyProductQuery(null, Criteria::LEFT_JOIN)
+                    ->filterBySku_In($stockConditionsTransfer->getProductConcreteSkus())
+                ->endUse()
                 ->endUse();
         }
 
