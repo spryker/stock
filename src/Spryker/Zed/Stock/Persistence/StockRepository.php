@@ -236,6 +236,8 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
      *     ...,
      * ]
      *
+     * @module Product
+     *
      * @param array<int> $productConcreteIds
      *
      * @return array<int, array<\Generated\Shared\Transfer\StockProductTransfer>>
@@ -245,9 +247,11 @@ class StockRepository extends AbstractRepository implements StockRepositoryInter
         $stockProductEntities = $this->getFactory()
             ->createStockProductQuery()
             ->filterByFkProduct_In($productConcreteIds)
+            ->leftJoinWithSpyProduct()
             ->useStockQuery()
                 ->filterByIsActive(true)
             ->endUse()
+            ->with('Stock')
             ->find();
 
         $result = [];
