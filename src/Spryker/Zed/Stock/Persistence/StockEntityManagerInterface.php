@@ -28,4 +28,9 @@ interface StockEntityManagerInterface
      * @return void
      */
     public function deleteStockStoreRelations(int $idStock, array $storeIds): void;
+
+    /**
+     * @param array<int> $stockProductIdsToKeep
+     */
+    public function deleteStockProductsExcluding(int $idProduct, array $stockProductIdsToKeep): void;
 }

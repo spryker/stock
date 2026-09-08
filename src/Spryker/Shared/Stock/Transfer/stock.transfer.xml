@@ -117,4 +117,19 @@
     <transfer name="ReservationRequest">
     </transfer>
 
+    <transfer name="ValidationResponse">
+    </transfer>
+
+    <transfer name="ValidationError">
+    </transfer>
+
+    <transfer name="ProductConcreteCollectionRequest" strict="true">
+    </transfer>
+
+    <transfer name="ProductConcreteCollectionResponse" strict="true">
+    </transfer>
+
+    <transfer name="Error">
+    </transfer>
+
 </transfers>

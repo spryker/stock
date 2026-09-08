@@ -485,4 +485,25 @@ class StockFacade extends AbstractFacade implements StockFacadeInterface
     {
         return $this->getRepository()->getStockStoreCollection($stockStoreCollectionCriteriaTransfer);
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     */
+    public function deleteOrphanStockProductsForProductConcrete(ProductConcreteTransfer $productConcreteTransfer): void
+    {
+        $stockProductIdsToKeep = [];
+
+        foreach ($productConcreteTransfer->getStocks() as $stockProductTransfer) {
+            if ($stockProductTransfer->getIdStockProduct()) {
+                $stockProductIdsToKeep[] = $stockProductTransfer->getIdStockProduct();
+            }
+        }
+
+        $this->getEntityManager()->deleteStockProductsExcluding(
+            $productConcreteTransfer->getIdProductConcreteOrFail(),
+            $stockProductIdsToKeep,
+        );
+    }
 }

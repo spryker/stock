@@ -325,7 +325,8 @@ class Writer implements WriterInterface
     {
         foreach ($productConcreteTransfer->getStocks() as $stockTransfer) {
             if (!$this->stockProductReader->hasStockProduct($stockTransfer->getSku(), $stockTransfer->getStockType())) {
-                $this->createStockProduct($stockTransfer);
+                $idStockProduct = $this->createStockProduct($stockTransfer);
+                $stockTransfer->setIdStockProduct($idStockProduct);
             } else {
                 $idStockProduct = $stockTransfer->getIdStockProduct();
                 if (!$idStockProduct) {

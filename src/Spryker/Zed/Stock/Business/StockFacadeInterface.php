@@ -434,7 +434,7 @@ interface StockFacadeInterface
 
     /**
      * Specification:
-     *   - Returns stock store collection by criteria.
+     * - Returns stock store collection by criteria.
      *
      * @api
      *
@@ -443,4 +443,13 @@ interface StockFacadeInterface
      * @return \Generated\Shared\Transfer\StockStoreCollectionTransfer
      */
     public function getStockStoreCollection(StockStoreCriteriaTransfer $stockStoreCollectionCriteriaTransfer): StockStoreCollectionTransfer;
+
+    /**
+     * Specification:
+     * - Collects stock product IDs from `ProductConcreteTransfer.stocks`.
+     * - Deletes stock product records for the given product that are not in the collected list.
+     *
+     * @api
+     */
+    public function deleteOrphanStockProductsForProductConcrete(ProductConcreteTransfer $productConcreteTransfer): void;
 }

@@ -9,6 +9,7 @@ namespace Spryker\Zed\Stock\Persistence;
 
 use Generated\Shared\Transfer\StockTransfer;
 use Orm\Zed\Stock\Persistence\SpyStockStore;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 
 /**
@@ -69,6 +70,27 @@ class StockEntityManager extends AbstractEntityManager implements StockEntityMan
 
         if ($stockStoreEntities->count()) {
             $stockStoreEntities->delete();
+        }
+    }
+
+    /**
+     * @param array<int> $stockProductIdsToKeep
+     */
+    public function deleteStockProductsExcluding(int $idProduct, array $stockProductIdsToKeep): void
+    {
+        $stockProductQuery = $this->getFactory()
+            ->createStockProductQuery()
+            ->filterByFkProduct($idProduct);
+
+        if ($stockProductIdsToKeep !== []) {
+            $stockProductQuery->filterByIdStockProduct($stockProductIdsToKeep, Criteria::NOT_IN);
+        }
+
+        /** @var \Propel\Runtime\Collection\ObjectCollection $stockProductEntities */
+        $stockProductEntities = $stockProductQuery->find();
+
+        if ($stockProductEntities->count()) {
+            $stockProductEntities->delete();
         }
     }
 }

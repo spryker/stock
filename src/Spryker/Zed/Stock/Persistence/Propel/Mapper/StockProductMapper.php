@@ -8,10 +8,16 @@
 namespace Spryker\Zed\Stock\Persistence\Propel\Mapper;
 
 use Generated\Shared\Transfer\StockProductTransfer;
+use Orm\Zed\Stock\Persistence\Map\SpyStockTableMap;
 use Orm\Zed\Stock\Persistence\SpyStockProduct;
 
 class StockProductMapper
 {
+    /**
+     * @uses \Orm\Zed\Stock\Persistence\Map\SpyStockTableMap::COL_UUID
+     */
+    protected const string COLUMN_UUID = 'uuid';
+
     /**
      * @param array<\Orm\Zed\Stock\Persistence\SpyStockProduct> $stockProductEntities
      *
@@ -38,6 +44,16 @@ class StockProductMapper
         $stockProductTransfer->setSku($stockProductEntity->getSpyProduct()->getSku());
         $stockProductTransfer->setStockType($stockProductEntity->getStock()->getName());
 
+        // The `uuid` column on `spy_stock` is optional for projects that have not migrated to it yet.
+        if ($this->isStockUuidSupported()) {
+            $stockProductTransfer->setStockUuid($stockProductEntity->getStock()->getUuid());
+        }
+
         return $stockProductTransfer;
+    }
+
+    protected function isStockUuidSupported(): bool
+    {
+        return SpyStockTableMap::getTableMap()->hasColumn(static::COLUMN_UUID);
     }
 }

@@ -12,6 +12,8 @@ use Spryker\Zed\Stock\Business\Expander\ReservationRequestExpander;
 use Spryker\Zed\Stock\Business\Expander\ReservationRequestExpanderInterface;
 use Spryker\Zed\Stock\Business\Model\Calculator;
 use Spryker\Zed\Stock\Business\Model\Writer;
+use Spryker\Zed\Stock\Business\Product\Validator\ProductStockValidator;
+use Spryker\Zed\Stock\Business\Product\Validator\ProductStockValidatorInterface;
 use Spryker\Zed\Stock\Business\Stock\StockCreator;
 use Spryker\Zed\Stock\Business\Stock\StockCreatorInterface;
 use Spryker\Zed\Stock\Business\Stock\StockMapper;
@@ -208,5 +210,10 @@ class StockBusinessFactory extends AbstractBusinessFactory
     public function getEventFacade(): StockToEventFacadeBridge
     {
         return $this->getProvidedDependency(StockDependencyProvider::FACADE_EVENT);
+    }
+
+    public function createProductStockValidator(): ProductStockValidatorInterface
+    {
+        return new ProductStockValidator($this->getRepository());
     }
 }
