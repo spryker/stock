@@ -96,7 +96,7 @@ class StockDataHelper extends Module
         ));
 
         $this->getDataCleanupHelper()->_addCleanup(function () use ($stockEntity) {
-            $stockEntity->delete();
+            $this->cleanUpStock($stockEntity->getIdStock());
         });
 
         return $stockTransfer;
@@ -168,6 +168,13 @@ class StockDataHelper extends Module
     protected function getStockFacade(): StockFacadeInterface
     {
         return $this->getLocator()->stock()->facade();
+    }
+
+    protected function cleanUpStock(int $idStock): void
+    {
+        SpyStockProductQuery::create()->filterByFkStock($idStock)->delete();
+        SpyStockStoreQuery::create()->filterByFkStock($idStock)->delete();
+        SpyStockQuery::create()->filterByIdStock($idStock)->delete();
     }
 
     protected function cleanUpStockProduct(int $idStockProduct): void
