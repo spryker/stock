@@ -8,6 +8,7 @@
         <property name="quantity" type="decimal"/>
         <property name="isNeverOutOfStock" type="string"/>
         <property name="idStockProduct" type="int"/>
+        <property name="stockUuid" type="string" strict="true"/>
     </transfer>
 
     <transfer name="Type" deprecated="Use StockTransfer instead">
@@ -115,6 +116,8 @@
     </transfer>
 
     <transfer name="ReservationRequest">
+        <property name="sku" type="string"/>
+        <property name="stores" type="Store[]" singular="store"/>
     </transfer>
 
     <transfer name="ValidationResponse">
@@ -124,12 +127,16 @@
     </transfer>
 
     <transfer name="ProductConcreteCollectionRequest" strict="true">
+        <property name="products" type="ProductConcrete[]" singular="product"/>
     </transfer>
 
     <transfer name="ProductConcreteCollectionResponse" strict="true">
+        <property name="errors" type="Error[]" singular="error"/>
     </transfer>
 
     <transfer name="Error">
+        <property name="entityIdentifier" type="string"/>
+        <property name="message" type="string"/>
     </transfer>
 
 </transfers>
