@@ -63,7 +63,8 @@ class StockProductUpdater implements StockProductUpdaterInterface
             }
 
             $offset += static::STOCK_PRODUCT_BATCH_SIZE;
-        } while (count($stockProductTransfers) === static::STOCK_PRODUCT_BATCH_SIZE);
+            $hasNextBatch = count($stockProductTransfers) === static::STOCK_PRODUCT_BATCH_SIZE;
+        } while ($hasNextBatch);
     }
 
     protected function handleStockUpdatePlugins(string $sku): void
